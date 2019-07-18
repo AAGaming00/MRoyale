@@ -201,7 +201,7 @@ class MyServerProtocol(WebSocketServerProtocol):
                 priv = packet["private"]
                 skin = int(packet["skin"]) if "skin" in packet else 0
                 self.player = Player(self,
-                                     name if self.username != "" else ("*"+name),
+                                     name,
                                      team if team != "" else self.server.defaultTeam,
                                      self.server.getMatch(team, priv if "private" in packet else False),
                                      skin if skin in range(NUM_SKINS) else 0)
@@ -601,7 +601,7 @@ class MyServerFactory(WebSocketServerFactory):
 
 if __name__ == '__main__':
     factory = MyServerFactory(u"ws://127.0.0.1:{0}/royale/ws")
-    # factory.setProtocolOptions(maxConnections=2)
+    factory.setProtocolOptions(autoPingInterval=5, autoPingTimeout=2)
 
     reactor.listenTCP(factory.listenPort, factory)
     reactor.run()

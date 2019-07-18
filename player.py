@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import re
 import emoji
 from twisted.internet import reactor
@@ -20,7 +22,9 @@ class Player(object):
         if len(self.team) > 0 and self.server.checkCurse(self.name):
             self.name = str()
         if len(self.name) == 0:
-            self.name = self.server.defaultName
+            self.name = self.server.defaultName if self.client.username != "" else ("【G】"+self.server.defaultName)
+        elif len(self.client.username) == 0:
+            self.name = "【G】" + self.name
         self.pendingWorld = None
         self.level = int()
         self.zone = int()
