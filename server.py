@@ -226,8 +226,9 @@ class MyServerProtocol(WebSocketServerProtocol):
 
                 status, msg = datastore.login(username, packet["password"])
 
+                j = {"type": "llg", "status": status, "msg": msg}
                 if status:
-                    self.username = username
+                    j["username"] = self.username = username
                     self.session = msg["session"]
                     self.server.authd.append(self.username)
                 else:
@@ -239,7 +240,7 @@ class MyServerProtocol(WebSocketServerProtocol):
                             del self.server.maxLoginTries[self.address]
                             self.server.loginBlocked.append(self.address)
                             reactor.callLater(60, self.server.loginBlocked.remove, self.address)
-                self.sendJSON({"type": "llg", "status": status, "msg": msg})
+                self.sendJSON(j)
 
             elif type == "llo": #logout
                 if self.username == "" or self.player is not None or self.pendingStat is None:
@@ -303,14 +304,15 @@ class MyServerProtocol(WebSocketServerProtocol):
                 
                 status, msg = datastore.resumeSession(packet["session"])
 
+                j = {"type": "lrs", "status": status, "msg": msg}
                 if status:
                     if msg["username"] in self.server.authd:
                         self.sendJSON({"type": "lrs", "status": False, "msg": "account already in use"})
                         return
-                    self.username = msg["username"]
+                    j["username"] = self.username = msg["username"]
                     self.session = msg["session"]
                     self.server.authd.append(self.username)
-                self.sendJSON({"type": "lrs", "status": status, "msg": msg})
+                self.sendJSON(j)
 
             elif type == "lpr": #update profile
                 if self.username == "" or self.player is not None or self.pendingStat is None:
