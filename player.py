@@ -25,6 +25,21 @@ class Player(object):
             self.name = self.server.defaultName if self.client.username != "" else ("【G】"+self.server.defaultName)
         elif len(self.client.username) == 0:
             self.name = "【G】" + self.name
+        if self.username.lower() in ["taliondiscord",
+                                    "damonj17",
+                                    "ddmil@marioroyale:~$",
+                                    "pixelcraftian",
+                                    "igor",
+                                    "minus",
+                                    "cyuubi",
+                                    "gyorokpeter",
+                                    "zizzydizzymc",
+                                    "nuts & milk",
+                                    "jupitersky",
+                                    "nethowarrior",
+                                    "real novex",
+                                    "nightyoshi370"]:
+            self.name = "【𝐃𝐄𝐕】" + self.name
         self.pendingWorld = None
         self.level = int()
         self.zone = int()
