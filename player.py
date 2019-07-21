@@ -25,7 +25,7 @@ class Player(object):
             self.name = self.server.defaultName if self.client.username != "" else ("【G】"+self.server.defaultName)
         elif len(self.client.username) == 0:
             self.name = "【G】" + self.name
-        if self.username.lower() in ["taliondiscord",
+        if self.client.username.lower() in ["taliondiscord",
                                     "damonj17",
                                     "ddmil@marioroyale:~$",
                                     "pixelcraftian",
