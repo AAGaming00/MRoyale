@@ -321,6 +321,13 @@ class MyServerProtocol(WebSocketServerProtocol):
                 
                 datastore.updateAccount(self.username, packet)
 
+            elif type == "lpc": #password change
+                if self.username == "" or self.player is not None or self.pendingStat is None:
+                    self.sendClose()
+                    return
+
+                datastore.changePassword(self.username, packet["password"])
+
         elif self.stat == "g":
             if type == "g00": # Ingame state ready
                 if self.player is None or self.pendingStat is None:
@@ -603,7 +610,7 @@ class MyServerFactory(WebSocketServerFactory):
 
 if __name__ == '__main__':
     factory = MyServerFactory(u"ws://127.0.0.1:{0}/royale/ws")
-    factory.setProtocolOptions(autoPingInterval=5, autoPingTimeout=2)
+    factory.setProtocolOptions(autoPingInterval=5, autoPingTimeout=5)
 
     reactor.listenTCP(factory.listenPort, factory)
     reactor.run()
