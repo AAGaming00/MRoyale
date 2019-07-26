@@ -137,7 +137,9 @@ def changePassword(username, password):
     salt = hashlib.sha256(os.urandom(60)).hexdigest().encode('ascii')
     pwdhash = ph.hash(password.encode('utf-8')+salt)
 
-    accounts[username]["pwdhash"] = pwdhash
+    acc = accounts[username]
+    acc["salt"] = salt
+    acc["pwdhash"] = pwdhash
     persistState()
 
 def logout(token):
