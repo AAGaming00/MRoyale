@@ -11,11 +11,12 @@ except Exception as e:
     pass
 
 class Player(object):
-    def __init__(self, client, name, team, match, skin):
+    def __init__(self, client, name, team, match, skin, gm):
         self.client = client
         self.server = client.server
         self.match = match
         self.skin = skin
+        self.gameMode = gm
         
         self.name = ' '.join(emoji.emojize(re.sub(r"[^\x00-\x7F]+", "", emoji.demojize(name)).strip())[:20].split()).upper()
         self.team = team

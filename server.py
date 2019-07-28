@@ -46,6 +46,7 @@ from player import Player
 from match import Match
 
 NUM_SKINS = 53   #temporary until shop is implemented
+NUM_GM = 3
 
 class MyServerProtocol(WebSocketServerProtocol):
     def __init__(self, server):
@@ -57,8 +58,8 @@ class MyServerProtocol(WebSocketServerProtocol):
 
         self.pendingStat = None
         self.stat = str()
-        self.username = str();
-        self.session = str();
+        self.username = str()
+        self.session = str()
         self.player = None
         self.blocked = bool()
 
@@ -198,13 +199,15 @@ class MyServerProtocol(WebSocketServerProtocol):
 
                 name = packet["name"]
                 team = packet["team"][:3].strip().upper()
-                priv = packet["private"]
+                priv = packet["private"] if "private" in packet else False
                 skin = int(packet["skin"]) if "skin" in packet else 0
+                gm = int(packet["gm"]) if "gm" in packet else 0
                 self.player = Player(self,
                                      name,
                                      team if team != "" else self.server.defaultTeam,
-                                     self.server.getMatch(team, priv if "private" in packet else False),
-                                     skin if skin in range(NUM_SKINS) else 0)
+                                     self.server.getMatch(team, priv, gm),
+                                     skin if skin in range(NUM_SKINS) else 0,
+                                     gm if gm in range(NUM_GM) else 0)
                 self.loginSuccess()
                 self.server.players.append(self.player)
                 
@@ -443,7 +446,7 @@ class MyServerFactory(WebSocketServerFactory):
         else:
             self.discordWebhook = None
 
-        self.randomWorldList = list()
+        self.randomWorldList = dict()
 
         self.maxLoginTries = {}
         self.loginBlocked = []
@@ -487,6 +490,16 @@ class MyServerFactory(WebSocketServerFactory):
         self.voteRateToStart = config.getfloat('Match', 'VoteRateToStart')
         self.allowLateEnter = config.getboolean('Match', 'AllowLateEnter')
         self.worlds = config.get('Match', 'Worlds').strip().split(',')
+        self.worldsPvP = config.get('Match', 'WorldsPVP').strip()
+        if len(self.worldsPvP) == 0:
+            self.worldsPvP = list(self.worlds)
+        else:
+            self.worldsPvP = self.worldsPvP.split(',')
+        self.worldsHell = config.get('Match', 'WorldsHell').strip()
+        if len(self.worldsHell) == 0:
+            self.worldsHell = list(self.worlds)
+        else:
+            self.worldsHell = self.worldsHell.split(',')
 
     def generalUpdate(self):
         playerCount = len(self.players)
@@ -522,17 +535,18 @@ class MyServerFactory(WebSocketServerFactory):
             
         reactor.callLater(5, self.generalUpdate)
 
-    def getRandomWorld(self):
-        if len(self.worlds) == 0:
+    def getRandomWorld(self, gameMode):
+        worlds = self.worldsPvP if gameMode == 1 else self.worldsHell if gameMode == 2 else self.worlds
+        if len(worlds) == 0:
             return None
         
-        if len(self.randomWorldList) > 0:
-            selected = random.choice(self.randomWorldList)
-            self.randomWorldList.remove(selected)
+        if gameMode in self.randomWorldList and len(self.randomWorldList[gameMode]) > 0:
+            selected = random.choice(self.randomWorldList[gameMode])
+            self.randomWorldList[gameMode].remove(selected)
             return selected
         
-        self.randomWorldList = list(self.worlds) # Make a copy
-        return self.getRandomWorld()
+        self.randomWorldList[gameMode] = list(worlds) # Make a copy
+        return self.getRandomWorld(gameMode)
 
     # Maybe this should be in a util class?
     def leet2(self, word):
@@ -585,20 +599,21 @@ class MyServerFactory(WebSocketServerFactory):
         protocol.factory = self
         return protocol
 
-    def getMatch(self, roomName, private):
+    def getMatch(self, roomName, private, gameMode):
+        print (gameMode)
         if private and roomName == "":
-            return Match(self, roomName, private)
+            return Match(self, roomName, private, gameMode)
         
         fmatch = None
         for match in self.matches:
-            if not match.closed and len(match.players) < self.playerCap and private == match.private and (not private or match.roomName == roomName):
+            if not match.closed and len(match.players) < self.playerCap and gameMode == match.gameMode and private == match.private and (not private or match.roomName == roomName):
                 if not self.allowLateEnter and match.playing:
                     continue
                 fmatch = match
                 break
 
         if fmatch == None:
-            fmatch = Match(self, roomName, private)
+            fmatch = Match(self, roomName, private, gameMode)
             self.matches.append(fmatch)
 
         return fmatch
