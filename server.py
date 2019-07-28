@@ -45,7 +45,7 @@ from buffer import Buffer
 from player import Player
 from match import Match
 
-NUM_SKINS = 53   #temporary until shop is implemented
+NUM_SKINS = 111   #temporary until shop is implemented
 NUM_GM = 3
 
 class MyServerProtocol(WebSocketServerProtocol):
