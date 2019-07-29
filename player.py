@@ -197,7 +197,7 @@ class Player(object):
                     # We already filter players that have a squad so...
                     if len(self.team) == 0 and self.server.checkCurse(self.name):
                         name = "[ censored ]"
-                    embed = DiscordEmbed(description='**%s** has achieved **#1** victory royale!' % name, color=0xffff00)
+                    embed = DiscordEmbed(description='**%s** has achieved **#1** victory royale!%s' % (name, " (PVP Mode)" if self.gameMode == 1 else " (Hell mode)" if self.gameMode == 2 else ""), color=0xffff00)
                     self.server.discordWebhook.add_embed(embed)
                     self.server.discordWebhook.execute()
                     self.server.discordWebhook.remove_embed(0)
