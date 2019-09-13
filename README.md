@@ -1,4 +1,4 @@
-# PyRoyale
+# MRoyale-Server
 A open-source server emulator for Mario Royale browser game.
 
 ![ScreenShot](https://i.imgur.com/4gpGSLs.png)
@@ -24,4 +24,4 @@ This project uses Python <b>3.7</b> and the following dependencies:
 <b>If you are on Windows, the module <u>pypiwin32</u> may also be required.</b> 
 
 ## Tutorial
-See [TUTORIAL.md](https://github.com/Igoorx/PyRoyale/blob/master/TUTORIAL.md) for more information about how to setup your own Mario Royale server.
+See [TUTORIAL.md](https://github.com/mroyale/mroyale-server/blob/master/TUTORIAL.md) for more information about how to setup your own Mario Royale server.
