@@ -464,7 +464,7 @@ class MyServerFactory(WebSocketServerFactory):
         config = configparser.ConfigParser()
         config.read('server.cfg')
 
-        self.listenPort = int(os.environ.get('PORT',3))
+        self.listenPort = config.getint('Server', 'ListenPort')
         self.mcode = config.get('Server', 'MCode').strip()
         self.statusPath = config.get('Server', 'StatusPath').strip()
         self.defaultName = config.get('Server', 'DefaultName').strip()
