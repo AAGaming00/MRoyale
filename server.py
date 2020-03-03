@@ -622,8 +622,8 @@ class MyServerFactory(WebSocketServerFactory):
             self.matches.remove(match)
                 
 
-if __name__ == '__main__':
-    factory = MyServerFactory(u"wss://merio-royale.herokuapp.com:9000/royale/ws")
+if True:
+    factory = MyServerFactory("wss://merio-royale.herokuapp.com:9000/royale/ws")
     factory.setProtocolOptions(autoPingInterval=5, autoPingTimeout=5)
 
     reactor.listenTCP(factory.listenPort, factory)
