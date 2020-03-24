@@ -623,7 +623,7 @@ class MyServerFactory(WebSocketServerFactory):
                 
 
 if True:
-    factory = MyServerFactory("ws://merio-royale.herokuapp.com/royale/ws")
+    factory = MyServerFactory("wss://localhost")
     factory.setProtocolOptions(autoPingInterval=5, autoPingTimeout=5)
 
     reactor.listenTCP(factory.listenPort, factory)
