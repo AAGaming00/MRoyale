@@ -174,7 +174,7 @@ class MyServerProtocol(WebSocketServerProtocol):
         self.server.blockAddress(self.address, self.player.name, reason)
 
     def onTextMessage(self, payload):
-        #print("Text message received: {0}".format(payload))
+        print("Text message received: {0}".format(payload))
         packet = json.loads(payload)
         type = packet["type"]
 
@@ -623,7 +623,7 @@ class MyServerFactory(WebSocketServerFactory):
                 
 
 if True:
-    factory = MyServerFactory("ws://merio-royale.herokuapp.com:9000/royale/ws")
+    factory = MyServerFactory("wss://merio-royale.herokuapp.com/royale/ws")
     factory.setProtocolOptions(autoPingInterval=5, autoPingTimeout=5)
 
     reactor.listenTCP(factory.listenPort, factory)
