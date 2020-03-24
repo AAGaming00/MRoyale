@@ -52,11 +52,11 @@ http {
     }
  
     upstream websocket {
-        server localhost:9000;
+        server localhost:3000;
     }
  
     server {
-        listen 3000;
+        listen <%= ENV["PORT"] %>;
         location /royale/ws {
             proxy_pass http://websocket;
             proxy_http_version 1.1;
