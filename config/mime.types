@@ -4,7 +4,7 @@ text/css                              css;
 text/xml                              xml;
 image/gif                             gif;
 image/jpeg                            jpeg jpg;
-**application/json                      json;**
+application/json                      json;
 application/x-javascript              js;
 application/atom+xml                  atom;
 application/rss+xml                   rss;
