@@ -1,1 +1,1 @@
-web: bash ~/backupthing.sh & sleep 10 && python3.7 server.py & ~/bin/start-nginx-solo 
+web: bash ~/backupthing.sh & sleep 15 && python3.7 server.py & ~/bin/start-nginx-solo 

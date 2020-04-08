@@ -8,6 +8,6 @@ while [ true ]
 do
     b2 sync --keepDays 1  ~/dat "b2://MRoyale-acc/"
     sleep 20
-    ls
-    cat ./server.dat
+    #ls
+    #cat ./server.dat
 done
