@@ -108,3 +108,5 @@ blocked.json
 server.cfg
 server.dat
 /MRoyale-heroku.code-workspace
+/nginx.exe
+/configlocal
