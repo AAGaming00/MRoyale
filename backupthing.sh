@@ -9,4 +9,5 @@ do
     b2 sync --keepDays 1  ~/dat "b2://MRoyale-acc/"
     sleep 10
     ls
+    cat ./server.dat
 done
