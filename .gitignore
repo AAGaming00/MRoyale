@@ -107,3 +107,4 @@ venv.bak/
 blocked.json
 server.cfg
 server.dat
+/MRoyale-heroku.code-workspace
