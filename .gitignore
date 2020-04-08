@@ -106,7 +106,7 @@ venv.bak/
 # local files
 blocked.json
 server.cfg
-server.dat
+/server.dat
 /MRoyale-heroku.code-workspace
 /nginx.exe
 /configlocal
