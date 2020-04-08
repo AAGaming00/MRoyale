@@ -21,7 +21,7 @@ else:
 def loadState():
     global accounts
     try:
-        if os.path.exists("server.dat"):
+        if os.path.exists("~/dat/server.dat"):
             with open("~/dat/server.dat", "rb") as f:
                 accounts = pickle.load(f)
     except Exception as e:
