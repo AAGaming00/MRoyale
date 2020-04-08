@@ -360,9 +360,9 @@ class MyServerProtocol(WebSocketServerProtocol):
                 self.player.voted = True
                 self.player.match.voteStart()
 
-            elif type == "g51": # (SPECIAL) Force start
-                if self.server.mcode and self.server.mcode in packet["code"]:
-                    self.player.match.start(True)
+            #elif type == "g51": # (SPECIAL) Force start
+            #    if self.server.mcode and self.server.mcode in packet["code"]:
+            #        self.player.match.start(True)
             
             elif type == "gsl":  # Level select
                 if self.player is None or self.player.team != "" or not self.player.match.private:
