@@ -2,7 +2,7 @@ import os
 import hashlib
 try:
     import argon2
-    #A2_IMPORT = True
+    A2_IMPORT = True
 except:
     # Maybe we can switch to a built-in passwordHasher?
     print("Can't import argon2-cffi, accounts functioning will be disabled.")
