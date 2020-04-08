@@ -22,13 +22,13 @@ def loadState():
     global accounts
     try:
         if os.path.exists("server.dat"):
-            with open("/dat/server.dat", "rb") as f:
+            with open("~/dat/server.dat", "rb") as f:
                 accounts = pickle.load(f)
     except Exception as e:
         print(e)
 
 def persistState():
-    with open("/dat/server.dat", "wb") as f:
+    with open("~/dat/server.dat", "wb") as f:
         pickle.dump(accounts, f)
 
 def register(username, password):
