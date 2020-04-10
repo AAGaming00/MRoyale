@@ -335,7 +335,7 @@ class MyServerProtocol(WebSocketServerProtocol):
             if type == "g00": # Ingame state ready
                 if self.player is None or self.pendingStat is None:
                     if self.blocked:
-                        self.sendJSON({"packets": [{"game": "jail", "type": "g01"}], "type": "s01"})
+                        #self.sendJSON({"packets": [{"game": "jail", "type": "g01"}], "type": "s01"})
                         return
                     self.sendClose()
                     return
@@ -346,8 +346,8 @@ class MyServerProtocol(WebSocketServerProtocol):
             elif type == "g03": # World load completed
                 if self.player is None:
                     if self.blocked:
-                        self.sendBin(0x02, Buffer().writeInt16(0).writeInt16(0))
-                        self.startDCTimer(15)
+                        #self.sendBin(0x02, Buffer().writeInt16(0).writeInt16(0))
+                        #self.startDCTimer(15)
                         return
                     self.sendClose()
                     return
@@ -398,7 +398,7 @@ class MyServerProtocol(WebSocketServerProtocol):
         b = Buffer(self.recv[1:pktLen])
         del self.recv[:pktLen]
         
-        if self.player is None or not self.player.loaded or self.blocked or (not self.player.match.closed and self.player.match.playing):
+        if self.player is None or not self.player.loaded or (not self.player.match.closed and self.player.match.playing):
             self.recv.clear()
             return False
         
@@ -578,14 +578,7 @@ class MyServerFactory(WebSocketServerFactory):
         return False
 
     def blockAddress(self, address, playerName, reason):
-        if not address in self.blocked:
-            self.blocked.append([address, playerName, reason])
-            try:
-                with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                   "blocked.json"), "w") as f:
-                    f.write(json.dumps(self.blocked))
-            except:
-                pass
+        return "no"
 
     def getPlayerCountByAddress(self, address):
         count = 0

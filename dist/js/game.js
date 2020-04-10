@@ -7868,7 +7868,7 @@ function Game(data) {
     this.input = new Input(this, this.canvas);
     this.display = new Display(this, this.container, this.canvas, data.resource);
     this.display.ensureSkin(app.net.skin);
-    if (!(this instanceof LobbyGame) && !(this instanceof JailGame) && app.charMusic && app.net.skin in SKIN_MUSIC_URL) {
+    if (!(this instanceof LobbyGame) && app.charMusic && app.net.skin in SKIN_MUSIC_URL) {
         app.settings.muteMusic = true;
     }
     this.objects = [];
@@ -8348,7 +8348,7 @@ Game.prototype.doStep = function() {
     if (undefined === this.startDelta || this.gameOver || player) {
         if (this.gameOver) {
             ++this.gameOverTimer;
-            if (this.gameOverTimer > Game.GAME_OVER_TIME && !this.gameoverReloading && !(this.game instanceof JailGame)) {
+            if (this.gameOverTimer > Game.GAME_OVER_TIME && !this.gameoverReloading) {
                 /*app.net.close();
                 app.game = null;
                 setTimeout(() => {
@@ -8376,7 +8376,7 @@ Game.prototype.doStep = function() {
         this.doSpawn();
         this.levelWarp(level);
         this.lives--;
-    } else if (0x2d < ++this.gameOverTimer && !(this instanceof JailGame)) {
+    } else if (0x2d < ++this.gameOverTimer) {
         this.gameOver = true;
         this.gameOverTimer = 0x0;
     }
@@ -8390,7 +8390,7 @@ Game.prototype.doSpawn = function() {
             initial = zone.initial;
         var obj = this.createObject(PlayerObject.ID, zone.level, zone.id, shor2.decode(initial), [this.pid, this.skin, this.isDev]);
         this.out.push(NET010.encode(zone.level, zone, initial));
-        if (app.net.gameMode === 1 && !(this instanceof LobbyGame) && !(this instanceof JailGame)) {
+        if (app.net.gameMode === 1 && !(this instanceof LobbyGame)) {
             obj.tfm(0x2);
             obj.rate = 0x71;
         }
@@ -8651,56 +8651,56 @@ LobbyGame.prototype.destroy = function() {
 }
 "use strict";
 
-function JailGame(data) {
-    Game.call(this, data);
-    this.lobbyTimer = 0x5a;
-}
-JailGame.prototype.load = Game.prototype.load;
-JailGame.prototype.send = Game.prototype.send;
-JailGame.prototype.handlePacket = Game.prototype.handlePacket;
-JailGame.prototype.updatePlayerList = Game.prototype.updatePlayerList;
-JailGame.prototype.gameStartTimer = function() {};
-JailGame.prototype.updateTeam = Game.prototype.updateTeam;
-JailGame.prototype.handleBinary = Game.prototype.handleBinary;
-JailGame.prototype.updatePacket = Game.prototype.updatePacket;
-JailGame.prototype.doUpdate = Game.prototype.doUpdate;
-JailGame.prototype.doNET002 = Game.prototype.doNET002;
-JailGame.prototype.doNET010 = Game.prototype.doNET010;
-JailGame.prototype.doNET011 = Game.prototype.doNET011;
-JailGame.prototype.doNET012 = Game.prototype.doNET012;
-JailGame.prototype.doNET013 = Game.prototype.doNET013;
-JailGame.prototype.doNET020 = Game.prototype.doNET020;
-JailGame.prototype.doNET021 = Game.prototype.doNET021;
-JailGame.prototype.doNET030 = Game.prototype.doNET030;
-JailGame.prototype.doStart = Game.prototype.doStart;
-JailGame.prototype.doDetermine = Game.prototype.doDetermine;
-JailGame.prototype.doInput = Game.prototype.doInput;
-JailGame.prototype.doTouch = Game.prototype.doTouch;
-JailGame.prototype.doStep = function() {
-    Game.prototype.doStep.call(this);
-};
-JailGame.prototype.doSpawn = function() {};
-JailGame.prototype.doMusic = Game.prototype.doMusic;
-JailGame.prototype.doPush = Game.prototype.doPush;
-JailGame.prototype.createObject = Game.prototype.createObject;
-JailGame.prototype.getObject = Game.prototype.getObject;
-JailGame.prototype.getFlag = Game.prototype.getFlag;
-JailGame.prototype.getPlatforms = Game.prototype.getPlatforms;
-JailGame.prototype.getGhost = Game.prototype.getGhost;
-JailGame.prototype.getPlayer = Game.prototype.getPlayer;
-JailGame.prototype.getZone = Game.prototype.getZone;
-JailGame.prototype.getRemain = Game.prototype.getRemain;
-JailGame.prototype.play = Game.prototype.play;
-JailGame.prototype.levelWarp = Game.prototype.levelWarp;
-JailGame.prototype.addCoin = Game.prototype.addCoin;
-JailGame.prototype.lifeage = Game.prototype.lifeage;
-JailGame.prototype.loop = function() {
-    0x0 < this.lobbyTimer ? this.lobbyTimer-- : undefined === this.startDelta && this.doStart();
-    Game.prototype.loop.call(this);
-};
-JailGame.prototype.draw = Game.prototype.draw;
-JailGame.prototype.destroy = Game.prototype.destroy;
-"use strict";
+//function JailGame(data) {
+//    Game.call(this, data);
+//    this.lobbyTimer = 0x5a;
+//}
+//JailGame.prototype.load = Game.prototype.load;
+//JailGame.prototype.send = Game.prototype.send;
+//JailGame.prototype.handlePacket = Game.prototype.handlePacket;
+//JailGame.prototype.updatePlayerList = Game.prototype.updatePlayerList;
+//JailGame.prototype.gameStartTimer = function() {};
+//JailGame.prototype.updateTeam = Game.prototype.updateTeam;
+//JailGame.prototype.handleBinary = Game.prototype.handleBinary;
+//JailGame.prototype.updatePacket = Game.prototype.updatePacket;
+//JailGame.prototype.doUpdate = Game.prototype.doUpdate;
+//JailGame.prototype.doNET002 = Game.prototype.doNET002;
+//JailGame.prototype.doNET010 = Game.prototype.doNET010;
+//JailGame.prototype.doNET011 = Game.prototype.doNET011;
+//JailGame.prototype.doNET012 = Game.prototype.doNET012;
+//JailGame.prototype.doNET013 = Game.prototype.doNET013;
+//JailGame.prototype.doNET020 = Game.prototype.doNET020;
+//JailGame.prototype.doNET021 = Game.prototype.doNET021;
+//JailGame.prototype.doNET030 = Game.prototype.doNET030;
+//JailGame.prototype.doStart = Game.prototype.doStart;
+//JailGame.prototype.doDetermine = Game.prototype.doDetermine;
+//JailGame.prototype.doInput = Game.prototype.doInput;
+//JailGame.prototype.doTouch = Game.prototype.doTouch;
+//JailGame.prototype.doStep = function() {
+//    Game.prototype.doStep.call(this);
+//};
+//JailGame.prototype.doSpawn = function() {};
+//JailGame.prototype.doMusic = Game.prototype.doMusic;
+//JailGame.prototype.doPush = Game.prototype.doPush;
+//JailGame.prototype.createObject = Game.prototype.createObject;
+//JailGame.prototype.getObject = Game.prototype.getObject;
+//JailGame.prototype.getFlag = Game.prototype.getFlag;
+//JailGame.prototype.getPlatforms = Game.prototype.getPlatforms;
+//JailGame.prototype.getGhost = Game.prototype.getGhost;
+//JailGame.prototype.getPlayer = Game.prototype.getPlayer;
+//JailGame.prototype.getZone = Game.prototype.getZone;
+//JailGame.prototype.getRemain = Game.prototype.getRemain;
+//JailGame.prototype.play = Game.prototype.play;
+//JailGame.prototype.levelWarp = Game.prototype.levelWarp;
+//JailGame.prototype.addCoin = Game.prototype.addCoin;
+//JailGame.prototype.lifeage = Game.prototype.lifeage;
+//JailGame.prototype.loop = function() {
+//    0x0 < this.lobbyTimer ? this.lobbyTimer-- : undefined === this.startDelta && this.doStart();
+//    Game.prototype.loop.call(this);
+//};
+//JailGame.prototype.draw = Game.prototype.draw;
+//JailGame.prototype.destroy = Game.prototype.destroy;
+//"use strict";
 
 function App() {
     this.menu = new Menu();
@@ -8769,7 +8769,7 @@ App.prototype.load = function(data) {
             break;
         case "jail":
         case "maintenance":
-            this.game = new JailGame(data);
+            //this.game = new JailGame(data);
             break;
         default:
             this.menu.error.show("Critical error! Game file missing type!");
