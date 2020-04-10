@@ -24,4 +24,4 @@ This project uses Python <b>3.7</b> and the following dependencies:
 <b>If you are on Windows, the module <u>pypiwin32</u> may also be required.</b> 
 
 ## Tutorial
-See [TUTORIAL.md](https://github.com/mroyale/mroyale-server/blob/master/TUTORIAL.md) for more information about how to setup your own Mario Royale server.
+See [TUTORIAL.md](https://github.com/ADoesGit/mroyale-server/blob/master/TUTORIAL.md) for more information about how to setup your own Mario Royale server.
