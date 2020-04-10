@@ -1587,21 +1587,7 @@ function genAddSkinButton(screen, guest) {
                 continue;
         }
         if (DEV_SKINS.includes(i) && (!(screen instanceof ProfileScreen) || !(
-           [//"taliondiscord",
-            //"damonj17",
-            //"ddmil@marioroyale:~$",
-            //"pixelcraftian",
-            //"igor",
-            //"minus",
-            //"cyuubi",
-            //"gyorokpeter",
-            //"zizzydizzymc",
-            //"nuts & milk",
-            //"jupitersky",
-            //"nethowarrior",
-            //"real novex",
-            //"nightyoshi370"
-            "aagaming",
+           ["aagaming",
             "cloudypotato"].includes(app.net.username.toLowerCase())))) {
             continue;
         }
