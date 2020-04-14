@@ -8325,7 +8325,7 @@ Game.prototype.doStep = function() {
     this.world.step();
     if (app.hurryingUp && app.hurryUpTime <= Date.now() && 0>=this.levelWarpTimer) {
         app.hurryingUp = false;
-        this.lives = 1;
+        this.lives = 0;
         if (player) player.kill();
     }
     for (var i = 0x0; i < this.sounds.length; i++) this.sounds[i].done() && this.sounds.splice(i--, 0x1);
