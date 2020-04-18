@@ -1892,9 +1892,9 @@ function ProfileScreen() {
     this.nicknameInput = document.getElementById("profile-nickname");
     this.squadInput = document.getElementById("profile-team");
     this.skinButtonPrefix = "profile-skin-select";
-    var that = this;
+    var that = ProfileScreen;
     this.saveBtn.onclick = function() {
-        that.prototype.onBack();
+        that.onBack();
     };
 }
 ProfileScreen.prototype.show = function(data) {
