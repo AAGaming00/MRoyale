@@ -1926,7 +1926,7 @@ ProfileScreen.prototype.save = function() {
  * @return {undefined}
  */
 ProfileScreen.prototype.onBack = function() {
-    this.save();
+    
     app.menu.mainAsMember.show();
 
 };
