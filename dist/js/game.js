@@ -1921,6 +1921,9 @@ ProfileScreen.prototype.save = function() {
         "skin": this.skin
     });
 }
+/**
+ * @return {undefined}
+ */
 ProfileScreen.prototype.onBack = function() {
     this.save();
 };
