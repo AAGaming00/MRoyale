@@ -1926,6 +1926,8 @@ ProfileScreen.prototype.save = function() {
  */
 ProfileScreen.prototype.onBack = function() {
     this.save();
+    app.menu.main.show();
+
 };
 ProfileScreen.prototype.reportError = function(message) {
     this.resultLabel.style.display = message ? "block" : "none";
