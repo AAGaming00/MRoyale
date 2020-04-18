@@ -1892,7 +1892,7 @@ function ProfileScreen() {
     this.nicknameInput = document.getElementById("profile-nickname");
     this.squadInput = document.getElementById("profile-team");
     this.skinButtonPrefix = "profile-skin-select";
-    var that = ProfileScreen;
+    var that = this;
     this.saveBtn.onclick = function() {
         that.onBack();
     };
@@ -1920,12 +1920,13 @@ ProfileScreen.prototype.save = function() {
         "squad": this.squadInput.value,
         "skin": this.skin
     });
+    this.onBack();
 }
 /**
  * @return {undefined}
  */
 ProfileScreen.prototype.onBack = function() {
-    this.save();
+    //this.save();
     app.menu.main.show();
 
 };
