@@ -1894,7 +1894,7 @@ function ProfileScreen() {
     this.skinButtonPrefix = "profile-skin-select";
     var that = this;
     this.saveBtn.onclick = function() {
-        that.onBack();
+        that.save();
     };
 }
 ProfileScreen.prototype.show = function(data) {
@@ -1926,8 +1926,8 @@ ProfileScreen.prototype.save = function() {
  * @return {undefined}
  */
 ProfileScreen.prototype.onBack = function() {
-    //this.save();
-    app.menu.main.show();
+    this.save();
+    app.menu.mainAsMember.show();
 
 };
 ProfileScreen.prototype.reportError = function(message) {
