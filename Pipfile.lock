@@ -53,11 +53,11 @@
         },
         "autobahn": {
             "hashes": [
-                "sha256:6d3989e4d8b0e961c9d3bb1fe133099767bbd5080cea21b2bdc2a0a1b4581b2e",
-                "sha256:c6ced3ad48a1d07b586316c6a9449f44c150db5b83c43aa69706527c9eb71395"
+                "sha256:ac8225bbdf05a04389f0c9378871a9a95698d7b5e02575ab16a99f8cb3e1d6b3",
+                "sha256:c6fe745d52ba9f9eecf791cd31f558df42aebfc4f9ee558a8f1d18c707e1ae1f"
             ],
             "index": "pypi",
-            "version": "==20.4.1"
+            "version": "==20.4.3"
         },
         "automat": {
             "hashes": [
