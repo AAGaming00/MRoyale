@@ -69,10 +69,10 @@
         },
         "b2": {
             "hashes": [
-                "sha256:18ed437b7bc67ce89881dcbec140b0687a00c7498021b6d1302376f49cecd63a"
+                "sha256:9a8762bf560e05c4708b1903304a3de1bc94cc25ce31ff77091ce395421fd65b"
             ],
             "index": "pypi",
-            "version": "==2.0.0"
+            "version": "==2.0.2"
         },
         "b2sdk": {
             "hashes": [
