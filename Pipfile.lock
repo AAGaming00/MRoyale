@@ -54,11 +54,11 @@
         },
         "autobahn": {
             "hashes": [
-                "sha256:ac8225bbdf05a04389f0c9378871a9a95698d7b5e02575ab16a99f8cb3e1d6b3",
-                "sha256:c6fe745d52ba9f9eecf791cd31f558df42aebfc4f9ee558a8f1d18c707e1ae1f"
+                "sha256:24ce276d313e84d68241c3aef30d484f352b90a40168981b3640312c821df77b",
+                "sha256:86bbce30cdd407137c57670993a8f9bfdfe3f8e994b889181d85e844d5aa8dfb"
             ],
             "index": "pypi",
-            "version": "==20.4.3"
+            "version": "==20.7.1"
         },
         "automat": {
             "hashes": [
@@ -190,7 +190,6 @@
                 "sha256:f2aa3f8ba9e2e3fd49bd3de743b976ab192fbf0eb0348cebde5d2a9de0090a9f",
                 "sha256:fb70a4cedd69dc52396ee114416a3656e011fb0311fca55eb55c7be6ed9c8aef"
             ],
-            "index": "pypi",
             "version": "==3.2"
         },
         "emoji": {
