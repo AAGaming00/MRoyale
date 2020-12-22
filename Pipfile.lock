@@ -71,16 +71,16 @@
         },
         "b2": {
             "hashes": [
-                "sha256:9a8762bf560e05c4708b1903304a3de1bc94cc25ce31ff77091ce395421fd65b"
+                "sha256:fdae4aa7c88c7981ae68784600cc820ab8fd591a2ca6dc7af5e6b4d1549c2080"
             ],
             "index": "pypi",
-            "version": "==2.0.2"
+            "version": "==2.1.0"
         },
         "b2sdk": {
             "hashes": [
-                "sha256:32451fab6e2f26e0316ebea1df96a864fc4a7fa7044a9f5ec90504d51a3ea23c"
+                "sha256:8e46ff9d47a9b90d8b9beab1969fcf4920300b02e20e6bf0745be04e09e8a6ff"
             ],
-            "version": "==1.1.4"
+            "version": "==1.2.0"
         },
         "captcha": {
             "hashes": [
@@ -144,13 +144,6 @@
                 "sha256:f864054d66fd9118f2e67044ac8981a54775ec5b67aed0441892edb553d21da5"
             ],
             "version": "==4.0.0"
-        },
-        "class-registry": {
-            "hashes": [
-                "sha256:678bdb0322566c07a4d8905140d364bd34a73baf46bf7580fc2e06fa994d4e7e",
-                "sha256:cfb855514753e2edfe8d88b14a6e449820682fe0983efe61b83df28b688b3e5a"
-            ],
-            "version": "==2.1.2"
         },
         "configparser": {
             "hashes": [
@@ -243,6 +236,13 @@
                 "sha256:e0ce7f95bab6e5b2fd835b3d8ff5e226704476671d15340a99b00285f4c2d1fc"
             ],
             "version": "==0.1.2"
+        },
+        "phx-class-registry": {
+            "hashes": [
+                "sha256:ebb6aa3d232f1a5081a00dab2551693bb39ac78359e01b42a9c157ef9a5f85ef",
+                "sha256:f11462ac410a8cda38c2b6a83b51a2390c7d9528baef591cb5b551b11aba2a92"
+            ],
+            "version": "==3.0.5"
         },
         "pillow": {
             "hashes": [
